@@ -1,19 +1,19 @@
-document.addEventListener("keydown", (e) => {
-  const keyCode = e.key.toLowerCase();
-  const $key = document.querySelector(`div[data-key="${keyCode}"]`);
-  const $audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+function removeTransition(e) {
+  e.target.classList.remove("key-press");
+}
 
-  // 방어 코드: 요소가 없을 경우 에러 방지
-  if (!$key) return;
+function keyPress(e) {
+  const keyCode = e.key.toLowerCase();
+  const $audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+  const $key = document.querySelector(`div[data-key="${keyCode}"]`);
+
+  if (!$audio) return;
 
   $key.classList.add("key-press");
+  $audio.currentTime = 0; // 재생 위치를 처음으로
+  $audio.play();
+}
 
-  if ($audio) {
-    $audio.currentTime = 0; // 재생 위치를 처음으로
-    $audio.play();
-  }
-
-  setTimeout(() => {
-    $key.classList.remove("key-press");
-  }, 150);
-});
+const $keys = document.querySelectorAll(".key");
+$keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
+window.addEventListener("keydown", keyPress);
