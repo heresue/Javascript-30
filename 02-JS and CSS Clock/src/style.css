@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://i.pinimg.com/736x/11/0f/de/110fde22ab1c775994acf0be0d514813.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.clock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  border: 16px solid #3b3b3b;
+  border-radius: 320px;
+}
+
+.hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130px;
+  height: 1px;
+  border: 3px solid #3b3b3b;
+  border-radius: 3px;
+}
+
+.hour-hand {
+  width: 100px;
+}
+
+.second-hand {
+  width: 140px;
+  border: 3px solid #f3f3f3;
+}
